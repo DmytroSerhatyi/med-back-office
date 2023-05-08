@@ -1,0 +1,9 @@
+$st-light-primary: mat-palette($mat-grey, 200, 500, 300);
+$st-light-accent: mat-palette($mat-brown, 200);
+$st-light-warn: mat-palette($mat-deep-orange, 200);
+
+$st-light-theme: mat-light-theme(
+  $st-light-primary,
+  $st-light-accent,
+  $st-light-warn
+);

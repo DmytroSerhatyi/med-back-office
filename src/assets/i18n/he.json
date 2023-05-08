@@ -1,0 +1,34 @@
+{
+  "stms.title.long": "LabOS test task",
+  "stms.title.short": "LabOS",
+  
+  "stms.menu.patients": "נבדקים",
+  "stms.menu.examples": "דוגמאות",
+  "stms.menu.orders": "הזמנות",
+  "stms.menu.login": "התחברות",
+  "stms.menu.logout": "התנתקות",
+  "stms.menu.settings": "הגדרות",
+
+  "stms.settings.animations.elements": "בזמן ניווט אלמנטים זיזים כלפי מעלה",
+  "stms.settings.animations.page": "טרנזיציה מלאה בניוט לדף",
+  "stms.settings.animations.title": "אנימציות",
+  "stms.settings.general.language.en": "אנגלית",
+  "stms.settings.general.language.he": "עברית",
+  "stms.settings.general.placeholder": "שפה",
+  "stms.settings.general.title": "כללי",
+  "stms.settings.themes.cyan": "ציאן",
+  "stms.settings.themes.light": "בהיר",
+  "stms.settings.themes.dark": "כהה",
+  "stms.settings.themes.nature": "טבע",
+  "stms.settings.themes.night-mode": "(מצב לילה אוטומטי (מ - 7:00   עד - 21:00",
+  "stms.settings.themes.placeholder": "צבע של ערכת נושא",
+  "stms.settings.themes.sticky-header": "חלק עליון נצמד",
+  "stms.settings.themes.title": "ערכאות נושא",
+  "stms.settings.title": "הגדרות",
+
+  "stms.patients.title": "נבדקים",
+  "stms.patients.get-patients": "מצא נבדקים",
+
+  "stms.orders.title": "הזמנות",
+  "stms.orders.get-orders": "מצא הזמנות"
+}
