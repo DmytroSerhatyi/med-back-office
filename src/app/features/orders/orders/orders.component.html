@@ -2,12 +2,44 @@
   <div rtl>
     <h1 class="main-heading">{{ 'stms.orders.title' | translate }}</h1>
     <div class="actions">
-      <a mat-raised-button class="actions-main" color="primary">
+      <a
+        mat-raised-button
+        class="actions-main"
+        color="primary"
+        (click)="getOrders()"
+      >
         {{ 'stms.orders.get-orders' | translate }}
       </a>
-      <!--
-        Endpoint to fetch data: https://api.mocki.io/v2/79fb05cb
-       -->
     </div>
+    <div *ngIf="!(isFetching$ | async)" class="table-wrapper">
+      <table *ngIf="(orderViews$ | async).length" mat-table [dataSource]="orderViews$ | async">
+        <ng-container [matColumnDef]="columnNames.favorite">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let order">
+            <st-big-input-action [faIcon]="order.isFavorite ? 'star' : 'star-half'" (action)="toggleFavorite(order)"></st-big-input-action>
+          </td>
+        </ng-container>
+        <ng-container [matColumnDef]="columnNames.name">
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.orders.table.columns.name-title' | translate }}</th>
+          <td mat-cell *matCellDef="let order">{{ order.name }}</td>
+        </ng-container>
+        <ng-container [matColumnDef]="columnNames.medicalCenter">
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.orders.table.columns.medical-center-title' | translate }}</th>
+          <td mat-cell *matCellDef="let order">{{ order.medicalCenter }}</td>
+        </ng-container>
+        <ng-container [matColumnDef]="columnNames.physician">
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.orders.table.columns.physician-title' | translate }}</th>
+          <td mat-cell *matCellDef="let order">{{ order.physician }}</td>
+        </ng-container>
+        <ng-container [matColumnDef]="columnNames.date">
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.orders.table.columns.date-title' | translate }}</th>
+          <td mat-cell *matCellDef="let order">{{ order.date }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+      </table>
+      <div *ngIf="!(orderViews$ | async).length">{{ 'stms.orders.no-data' | translate }}</div>
+    </div>
+    <st-spinner *ngIf="isFetching$ | async"></st-spinner>
   </div>
 </div>

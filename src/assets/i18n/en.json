@@ -1,7 +1,7 @@
 {
   "stms.title.long": "LabOS test task",
   "stms.title.short": "LabOS",
-  
+
   "stms.menu.patients": "Patients",
   "stms.menu.examples": "Examples",
   "stms.menu.orders": "Orders",
@@ -30,5 +30,11 @@
   "stms.patients.get-patients": "Get patients",
 
   "stms.orders.title": "Orders",
-  "stms.orders.get-orders": "Get orders"
+  "stms.orders.get-orders": "Get orders",
+
+  "stms.orders.no-data": "No orders to show",
+  "stms.orders.table.columns.name-title": "Name",
+  "stms.orders.table.columns.medical-center-title": "Medical center",
+  "stms.orders.table.columns.physician-title": "Physician",
+  "stms.orders.table.columns.date-title": "Date"
 }

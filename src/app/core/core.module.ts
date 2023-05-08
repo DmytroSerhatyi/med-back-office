@@ -27,7 +27,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { FormsModule } from "@angular/forms";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-
+import { selectFavoriteOrders, selectOrders } from "app/core/orders/orders.selector";
 import { environment } from "../../environments/environment";
 
 import {
@@ -60,6 +60,8 @@ import {
 import { MatButtonModule } from "@angular/material/button";
 import {
   faCog,
+  faStar,
+  faStarHalf,
   faBars,
   faRocket,
   faPowerOff,
@@ -73,6 +75,7 @@ import {
   faInstagram,
   faYoutube
 } from "@fortawesome/free-brands-svg-icons";
+import { OrdersEffects } from "./orders/orders.effects";
 
 export {
   TitleService,
@@ -90,7 +93,9 @@ export {
   NotificationService,
   selectEffectiveTheme,
   selectSettingsLanguage,
-  selectSettingsStickyHeader
+  selectSettingsStickyHeader,
+  selectOrders,
+  selectFavoriteOrders
 };
 
 export function httpLoaderFactory(http: HttpClient) {
@@ -122,7 +127,7 @@ export function httpLoaderFactory(http: HttpClient) {
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, SettingsEffects]),
+    EffectsModule.forRoot([AuthEffects, SettingsEffects, OrdersEffects]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
@@ -177,6 +182,8 @@ export class CoreModule {
     }
     faIconLibrary.addIcons(
       faCog,
+      faStar,
+      faStarHalf,
       faBars,
       faRocket,
       faPowerOff,

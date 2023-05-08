@@ -1,7 +1,7 @@
 {
   "stms.title.long": "LabOS test task",
   "stms.title.short": "LabOS",
-  
+
   "stms.menu.patients": "נבדקים",
   "stms.menu.examples": "דוגמאות",
   "stms.menu.orders": "הזמנות",
@@ -30,5 +30,11 @@
   "stms.patients.get-patients": "מצא נבדקים",
 
   "stms.orders.title": "הזמנות",
-  "stms.orders.get-orders": "מצא הזמנות"
+  "stms.orders.get-orders": "מצא הזמנות",
+
+  "stms.orders.no-data": "No orders to show",
+  "stms.orders.table.columns.name-title": "Name",
+  "stms.orders.table.columns.medical-center-title": "Medical center",
+  "stms.orders.table.columns.physician-title": "Physician",
+  "stms.orders.table.columns.date-title": "Date"
 }
