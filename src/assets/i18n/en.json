@@ -29,6 +29,12 @@
   "stms.patients.title": "Patients",
   "stms.patients.get-patients": "Get patients",
 
+  "stms.patients.no-data": "No patients to show",
+  "stms.patients.table.columns.first-name-title": "First name",
+  "stms.patients.table.columns.last-name-title": "Last name",
+  "stms.patients.table.columns.birth-date-title": "Birth date",
+  "stms.patients.table.columns.age-title": "Age",
+
   "stms.orders.title": "Orders",
   "stms.orders.get-orders": "Get orders",
 

@@ -2,12 +2,44 @@
   <div rtl>
     <h1 class="main-heading">{{ 'stms.patients.title' | translate }}</h1>
     <div class="actions">
-      <a mat-raised-button class="actions-main" color="primary">
+      <a
+        mat-raised-button
+        class="actions-main"
+        color="primary"
+        (click)="getPatients()"
+      >
         {{ 'stms.patients.get-patients' | translate }}
       </a>
-      <!--
-        Endpoint to fetch data: https://api.mocki.io/v2/51597ef3
-       -->
+      <div *ngIf="!(isFetching$ | async)" class="table-wrapper">
+        <table *ngIf="(patientViews$ | async).length" mat-table [dataSource]="patientViews$ | async">
+          <ng-container [matColumnDef]="columnNames.favorite">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let patient">
+              <st-big-input-action [faIcon]="patient.isFavorite ? 'star' : 'star-half'" (action)="toggleFavorite(patient)"></st-big-input-action>
+            </td>
+          </ng-container>
+          <ng-container [matColumnDef]="columnNames.firstName">
+            <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.patients.table.columns.first-name-title' | translate }}</th>
+            <td mat-cell *matCellDef="let patient">{{ patient.firstName }}</td>
+          </ng-container>
+          <ng-container [matColumnDef]="columnNames.lastName">
+            <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.patients.table.columns.last-name-title' | translate }}</th>
+            <td mat-cell *matCellDef="let patient">{{ patient.lastName }}</td>
+          </ng-container>
+          <ng-container [matColumnDef]="columnNames.birthDate">
+            <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.patients.table.columns.birth-date-title' | translate }}</th>
+            <td mat-cell *matCellDef="let patient">{{ patient.birthDate }}</td>
+          </ng-container>
+          <ng-container [matColumnDef]="columnNames.age">
+            <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.patients.table.columns.age-title' | translate }}</th>
+            <td mat-cell *matCellDef="let patient">{{ patient.age }}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+        </table>
+        <div *ngIf="!(patientViews$ | async).length">{{ 'stms.patients.no-data' | translate }}</div>
+      </div>
+      <st-spinner *ngIf="isFetching$ | async"></st-spinner>
     </div>
   </div>
 </div>

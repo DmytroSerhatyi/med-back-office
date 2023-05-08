@@ -1,11 +1,10 @@
-import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from "@angular/core";
 import { AppState, ROUTE_ANIMATIONS_ELEMENTS, selectFavoriteOrders, selectOrders } from "../../../core/core.module";
 import { OrderView } from "app/shared/models/order.model";
 import { Store, select } from "@ngrx/store";
 import { BehaviorSubject, Subject, combineLatest } from "rxjs";
-import { filter, map, tap } from "rxjs/operators";
+import { filter, map, takeUntil, tap } from "rxjs/operators";
 import { fetchOrders, ordersFavor, ordersUnfavor } from "../../../core/orders/orders.actions";
-
 
 enum OrdersColumnName {
   name = 'name',
@@ -21,7 +20,7 @@ enum OrdersColumnName {
   styleUrls: ["./orders.component.scss", "../../styles/table.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   orders: OrderView[];
   columnNames = OrdersColumnName;
@@ -34,6 +33,8 @@ export class OrdersComponent implements OnInit {
   ];
   isFetching$: Subject<boolean> = new Subject<boolean>();
   orderViews$: BehaviorSubject<OrderView[]> =  new BehaviorSubject<OrderView[]>([]);
+
+  private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<AppState>) {}
 
@@ -58,11 +59,17 @@ export class OrdersComponent implements OnInit {
                 isFavorite: favoritesSet.has(order.identifier)
               };
             });
-        })
+        }),
+        takeUntil(this.destroy$)
       )
       .subscribe(ordersViews => {
         this.orderViews$.next(ordersViews);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   getOrders(): void {
