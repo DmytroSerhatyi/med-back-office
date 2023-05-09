@@ -1,0 +1,23 @@
+.table-wrapper {
+  margin: 2rem 0;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 1000px;
+}
+
+th.mat-header-cell:first-of-type,
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type {
+  padding-left: unset;
+  padding-inline-start: 24px;
+}
+
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+  padding-right: unset;
+  padding-inline-end: 24px;
+}

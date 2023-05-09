@@ -100,3 +100,19 @@ export interface Order {
   exceptions?: any[];
   microOrganisms?: string;
 }
+
+export interface GetOrdersResponse {
+  count: number;
+  moreUncountedMatches: boolean;
+  order: Order[];
+  undisplayedMatches: boolean;
+}
+
+export interface OrderView {
+  id: string;
+  name: string;
+  medicalCenter: string;
+  physician: string;
+  date: string;
+  isFavorite: boolean;
+}
