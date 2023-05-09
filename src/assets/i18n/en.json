@@ -5,6 +5,7 @@
   "stms.menu.patients": "Patients",
   "stms.menu.examples": "Examples",
   "stms.menu.orders": "Orders",
+  "stms.menu.favorites": "Favorites",
   "stms.menu.login": "Sign in",
   "stms.menu.logout": "Logout",
   "stms.menu.settings": "Settings",
@@ -30,6 +31,7 @@
   "stms.patients.get-patients": "Get patients",
 
   "stms.patients.no-data": "No patients to show",
+  "stms.patients.table.columns.favorite": "Favorite",
   "stms.patients.table.columns.first-name-title": "First name",
   "stms.patients.table.columns.last-name-title": "Last name",
   "stms.patients.table.columns.birth-date-title": "Birth date",
@@ -39,8 +41,22 @@
   "stms.orders.get-orders": "Get orders",
 
   "stms.orders.no-data": "No orders to show",
+  "stms.orders.table.columns.favorite": "Favorite",
   "stms.orders.table.columns.name-title": "Name",
   "stms.orders.table.columns.medical-center-title": "Medical center",
   "stms.orders.table.columns.physician-title": "Physician",
-  "stms.orders.table.columns.date-title": "Date"
+  "stms.orders.table.columns.date-title": "Date",
+
+  "stms.favorites.title": "Favorites",
+  "stms.favorites.get-favorites": "Get favorites",
+
+  "stms.favorites.no-data": "No favorites to show",
+  "stms.favorites.table.columns.type-title": "Type",
+  "stms.favorites.table.columns.name-title": "Name",
+  "stms.favorites.table.columns.type-patient": "Patient",
+  "stms.favorites.table.columns.type-order": "Order",
+  "stms.favorites.table.columns.unfavor": "Remove from favorite",
+
+  "stms.actions.add": "Add",
+  "stms.actions.remove": "Remove"
 }

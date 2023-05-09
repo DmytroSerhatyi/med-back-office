@@ -61,8 +61,6 @@ import {
 import { MatButtonModule } from "@angular/material/button";
 import {
   faCog,
-  faStar,
-  faStarHalf,
   faBars,
   faRocket,
   faPowerOff,
@@ -186,8 +184,6 @@ export class CoreModule {
     }
     faIconLibrary.addIcons(
       faCog,
-      faStar,
-      faStarHalf,
       faBars,
       faRocket,
       faPowerOff,

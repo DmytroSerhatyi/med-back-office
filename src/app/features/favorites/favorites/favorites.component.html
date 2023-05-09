@@ -1,0 +1,40 @@
+<div class="container">
+  <div rtl>
+    <h1 class="main-heading">{{ 'stms.favorites.title' | translate }}</h1>
+    <div class="actions">
+      <a
+        mat-raised-button
+        class="actions-main"
+        color="primary"
+        (click)="getFavorites()"
+      >
+        {{ 'stms.favorites.get-favorites' | translate }}
+      </a>
+    </div>
+    <div *ngIf="!(isFetching$ | async)" class="table-wrapper">
+      <table *ngIf="(favoriteViews$ | async).length" mat-table [dataSource]="favoriteViews$ | async">
+        <ng-container [matColumnDef]="columnNames.type">
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.favorites.table.columns.type-title' | translate }}</th>
+          <td mat-cell *matCellDef="let favorite">{{ favorite.typeKey | translate }}</td>
+        </ng-container>
+        <ng-container [matColumnDef]="columnNames.name">
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.favorites.table.columns.name-title' | translate }}</th>
+          <td mat-cell *matCellDef="let favorite">{{ favorite.name }}</td>
+        </ng-container>
+        <ng-container [matColumnDef]="columnNames.remove">
+          <th mat-header-cell *matHeaderCellDef>{{ 'stms.favorites.table.columns.unfavor' | translate }}</th>
+          <td mat-cell *matCellDef="let favorite">
+            <st-big-input-action
+              [label]="'stms.actions.remove' | translate"
+              (action)="unfavorite(favorite)"
+            ></st-big-input-action>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+      </table>
+      <div *ngIf="!(favoriteViews$ | async).length">{{ 'stms.favorites.no-data' | translate }}</div>
+    </div>
+    <st-spinner *ngIf="isFetching$ | async"></st-spinner>
+  </div>
+</div>
