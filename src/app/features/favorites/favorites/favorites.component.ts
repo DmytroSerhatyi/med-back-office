@@ -35,8 +35,9 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     FavoritesColumnName.remove
   ];
   isFetching$: Subject<boolean> = new Subject<boolean>();
-  favoriteViews$: BehaviorSubject<FavoriteView[]> =  new BehaviorSubject<FavoriteView[]>([]);
+  favoriteViews$: BehaviorSubject<FavoriteView[]> = new BehaviorSubject<FavoriteView[]>([]);
 
+  private filter$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<AppState>) {}
@@ -51,32 +52,37 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       patients$,
       orders$,
       favoritePatientIds$,
-      favoriteOrderIds$
+      favoriteOrderIds$,
+      this.filter$,
     ])
       .pipe(
         tap(() => this.isFetching$.next(false)),
         filter(([orders, patients]) => !!orders && !!patients),
-        map(([patients, orders, favoritePatientIds, favoriteOrderIds]) => {
+        map(([patients, orders, favoritePatientIds, favoriteOrderIds, filterValue]) => {
           const favoriteOrdersSet = new Set<string>(favoriteOrderIds);
           const favoritePatientsSet = new Set<string>(favoritePatientIds);
 
-          const favoritePatients: FavoriteView[] = patients.filter(patient => favoritePatientsSet.has(patient.defaultId)).map(patient => {
-            return {
-              id: patient.defaultId,
-              name: patient.fullName,
-              type: FavoriteType.patient,
-              typeKey: 'stms.favorites.table.columns.type-patient'
-            }
-          });
+          const favoritePatients: FavoriteView[] = patients
+            .filter(patient => favoritePatientsSet.has(patient.defaultId) && this.filterFavoriteByName(patient.fullName, filterValue))
+            .map(patient => {
+              return {
+                id: patient.defaultId,
+                name: patient.fullName,
+                type: FavoriteType.patient,
+                typeKey: 'stms.favorites.table.columns.type-patient'
+              }
+            });
 
-          const favoriteOrders: FavoriteView[] = orders.filter(order => favoriteOrdersSet.has(order.identifier)).map(order => {
-            return {
-              id: order.identifier,
-              name: order.orderName,
-              type: FavoriteType.order,
-              typeKey: 'stms.favorites.table.columns.type-order'
-            }
-          });
+          const favoriteOrders: FavoriteView[] = orders
+            .filter(order => favoriteOrdersSet.has(order.identifier) && this.filterFavoriteByName(order.orderName, filterValue))
+            .map(order => {
+              return {
+                id: order.identifier,
+                name: order.orderName,
+                type: FavoriteType.order,
+                typeKey: 'stms.favorites.table.columns.type-order'
+              }
+            });
 
           return [...favoritePatients, ... favoriteOrders];
         }),
@@ -109,5 +115,17 @@ export class FavoritesComponent implements OnInit, OnDestroy {
         this.store.dispatch(ordersUnfavor({ orderId: favoriterId }));
         break;
     }
+  }
+
+  onFilter(filterValue: string): void {
+    this.filter$.next(filterValue.toLowerCase());
+  }
+
+  private filterFavoriteByName(name: string, filterValue: string): boolean {
+    if (!filterValue) {
+      return true;
+    }
+
+    return name.toLowerCase().includes(filterValue);
   }
 }

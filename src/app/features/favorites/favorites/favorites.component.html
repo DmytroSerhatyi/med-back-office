@@ -11,6 +11,7 @@
         {{ 'stms.favorites.get-favorites' | translate }}
       </a>
     </div>
+    <st-big-input [placeholder]="'stms.favorites.filter.placeholder' | translate" (changed)="onFilter($event)"></st-big-input>
     <div *ngIf="!(isFetching$ | async)" class="table-wrapper">
       <table *ngIf="(favoriteViews$ | async).length" mat-table [dataSource]="favoriteViews$ | async">
         <ng-container [matColumnDef]="columnNames.type">
