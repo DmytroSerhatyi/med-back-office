@@ -23,7 +23,6 @@ enum PatientsColumnName {
 })
 export class PatientsComponent implements OnInit, OnDestroy {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  patients: PatientView[];
   columnNames = PatientsColumnName;
   displayedColumns = [
     PatientsColumnName.favorite,

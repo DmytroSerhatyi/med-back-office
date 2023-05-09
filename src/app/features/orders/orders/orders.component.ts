@@ -22,7 +22,6 @@ enum OrdersColumnName {
 })
 export class OrdersComponent implements OnInit, OnDestroy {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  orders: OrderView[];
   columnNames = OrdersColumnName;
   displayedColumns = [
     OrdersColumnName.favorite,

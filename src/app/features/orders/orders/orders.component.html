@@ -14,9 +14,12 @@
     <div *ngIf="!(isFetching$ | async)" class="table-wrapper">
       <table *ngIf="(orderViews$ | async).length" mat-table [dataSource]="orderViews$ | async">
         <ng-container [matColumnDef]="columnNames.favorite">
-          <th mat-header-cell *matHeaderCellDef></th>
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.orders.table.columns.favorite' | translate }}</th>
           <td mat-cell *matCellDef="let order">
-            <st-big-input-action [faIcon]="order.isFavorite ? 'star' : 'star-half'" (action)="toggleFavorite(order)"></st-big-input-action>
+            <st-big-input-action
+              [label]="(order.isFavorite ? 'stms.actions.remove' : 'stms.actions.add') | translate"
+              (action)="toggleFavorite(order)"
+            ></st-big-input-action>
           </td>
         </ng-container>
         <ng-container [matColumnDef]="columnNames.name">

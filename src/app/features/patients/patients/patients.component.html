@@ -13,9 +13,12 @@
       <div *ngIf="!(isFetching$ | async)" class="table-wrapper">
         <table *ngIf="(patientViews$ | async).length" mat-table [dataSource]="patientViews$ | async">
           <ng-container [matColumnDef]="columnNames.favorite">
-            <th mat-header-cell *matHeaderCellDef></th>
+            <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.patients.table.columns.favorite' | translate }}</th>
             <td mat-cell *matCellDef="let patient">
-              <st-big-input-action [faIcon]="patient.isFavorite ? 'star' : 'star-half'" (action)="toggleFavorite(patient)"></st-big-input-action>
+              <st-big-input-action
+                [label]="(patient.isFavorite ? 'stms.actions.remove' : 'stms.actions.add') | translate"
+                (action)="toggleFavorite(patient)"
+              ></st-big-input-action>
             </td>
           </ng-container>
           <ng-container [matColumnDef]="columnNames.firstName">
