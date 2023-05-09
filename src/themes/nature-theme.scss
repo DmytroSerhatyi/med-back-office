@@ -1,0 +1,9 @@
+$st-nature-primary: mat-palette($mat-brown, 700, 300, 900);
+$st-nature-accent: mat-palette($mat-deep-purple, 300);
+$st-nature-warn: mat-palette($mat-red, 600);
+
+$st-nature-theme: mat-light-theme(
+  $st-nature-primary,
+  $st-nature-accent,
+  $st-nature-warn
+);

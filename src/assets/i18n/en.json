@@ -1,0 +1,34 @@
+{
+  "stms.title.long": "LabOS test task",
+  "stms.title.short": "LabOS",
+  
+  "stms.menu.patients": "Patients",
+  "stms.menu.examples": "Examples",
+  "stms.menu.orders": "Orders",
+  "stms.menu.login": "Sign in",
+  "stms.menu.logout": "Logout",
+  "stms.menu.settings": "Settings",
+
+  "stms.settings.animations.elements": "Navigation page elements slide up",
+  "stms.settings.animations.page": "Navigation whole page transition",
+  "stms.settings.animations.title": "Animations",
+  "stms.settings.general.language.en": "English",
+  "stms.settings.general.language.he": "Hebrew",
+  "stms.settings.general.placeholder": "Language",
+  "stms.settings.general.title": "General",
+  "stms.settings.themes.cyan": "Cyan",
+  "stms.settings.themes.dark": "Dark",
+  "stms.settings.themes.light": "Light",
+  "stms.settings.themes.nature": "Nature",
+  "stms.settings.themes.night-mode": "Auto night mode (from 21:00 to 7:00)",
+  "stms.settings.themes.placeholder": "Color Theme",
+  "stms.settings.themes.sticky-header": "Sticky header",
+  "stms.settings.themes.title": "Themes",
+  "stms.settings.title": "Settings",
+
+  "stms.patients.title": "Patients",
+  "stms.patients.get-patients": "Get patients",
+
+  "stms.orders.title": "Orders",
+  "stms.orders.get-orders": "Get orders"
+}

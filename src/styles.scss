@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+
+@import 'styles-variables';
+@import 'styles-reset';
+
+@import './themes/default-theme';
+@import './themes/light-theme';
+@import './themes/black-theme';
+@import './themes/nature-theme';
+
+@import 'styles-reset.scss-theme';
+@import './app/app-root/app-root.component.scss-theme';
+@import './app/shared/components/big-input/big-input/big-input.component.scss-theme';
+@import './app/features/patients/patients/patients.component.scss-theme';
+
+@include mat-core();
+
+@mixin custom-components-theme($theme) {
+  @include st-styles-reset-theme($theme);
+  @include st-app-root-component-theme($theme);
+  @include st-patients-component-theme($theme);
+}
+
+.default-theme {
+  @include angular-material-theme($st-theme);
+  @include custom-components-theme($st-theme);
+}
+
+.light-theme {
+  @include angular-material-theme($st-light-theme);
+  @include custom-components-theme($st-light-theme);
+}
+
+.black-theme {
+  @include angular-material-theme($st-black-theme);
+  @include custom-components-theme($st-black-theme);
+}
+
+.nature-theme {
+  @include angular-material-theme($st-nature-theme);
+  @include custom-components-theme($st-nature-theme);
+}
