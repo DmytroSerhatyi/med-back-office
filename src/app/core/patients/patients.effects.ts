@@ -10,14 +10,15 @@ import { selectFavoritePatients } from "./patients.selector";
 import { PatientsAppState } from "./patients.model";
 import { GetPatientsResponse } from "app/shared/models/patient.model";
 
-export const FAVORITE_PATIENTS_STATE_PATH_KEY = "PATIENTS.FAVORITE-PATIENTS";
+const FAVORITE_PATIENTS_STATE_PATH_KEY = "PATIENTS.FAVORITE-PATIENTS";
+const GET_PATIENTS_API_URL = "https://api.mocki.io/v2/51597ef3"
 
 @Injectable()
 export class PatientsEffects {
   fetchPatients = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchPatients),
-      exhaustMap(() => this.httpService.get<GetPatientsResponse>("https://api.mocki.io/v2/51597ef3")
+      exhaustMap(() => this.httpService.get<GetPatientsResponse>(GET_PATIENTS_API_URL)
         .pipe(
           map(response => {
             return patientsFetched({ patients: response.patient });

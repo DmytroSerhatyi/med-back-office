@@ -15,9 +15,9 @@ import { fetchPatients, patientsUnfavor } from "../../../core/patients/patients.
 import { FavoriteType, FavoriteView } from "app/shared/models/favorite.model";
 
 enum FavoritesColumnName {
-  type = 'type',
-  name = 'name',
-  remove = 'remove'
+  type = "type",
+  name = "name",
+  remove = "remove"
 }
 
 @Component({
@@ -37,7 +37,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   isFetching$: Subject<boolean> = new Subject<boolean>();
   favoriteViews$: BehaviorSubject<FavoriteView[]> = new BehaviorSubject<FavoriteView[]>([]);
 
-  private filter$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private filter$: BehaviorSubject<string> = new BehaviorSubject<string>("");
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<AppState>) {}
@@ -69,7 +69,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
                 id: patient.defaultId,
                 name: patient.fullName,
                 type: FavoriteType.patient,
-                typeKey: 'stms.favorites.table.columns.type-patient'
+                typeKey: "stms.favorites.table.columns.type-patient"
               }
             });
 
@@ -80,7 +80,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
                 id: order.identifier,
                 name: order.orderName,
                 type: FavoriteType.order,
-                typeKey: 'stms.favorites.table.columns.type-order'
+                typeKey: "stms.favorites.table.columns.type-order"
               }
             });
 

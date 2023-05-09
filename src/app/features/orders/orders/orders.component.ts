@@ -7,11 +7,11 @@ import { filter, map, takeUntil, tap } from "rxjs/operators";
 import { fetchOrders, ordersFavor, ordersUnfavor } from "../../../core/orders/orders.actions";
 
 enum OrdersColumnName {
-  name = 'name',
-  medicalCenter = 'medical-center',
-  physician = 'physician',
-  date = 'date',
-  favorite = 'favorite',
+  name = "name",
+  medicalCenter = "medical-center",
+  physician = "physician",
+  date = "date",
+  favorite = "favorite",
 }
 
 @Component({

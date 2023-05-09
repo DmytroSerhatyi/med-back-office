@@ -18,10 +18,11 @@
 - Bonus 2: Please make it look nice
 
 Estimation:
+My estimation sounded like one day was enough to have it done. Actually it took about 9 hours.
 
 Things to emphasize:
 1. Used node v14.21.3 and npm v6.14.18. Newer node versions due to new strict version checks throw error about incompatibility of package versions.
 Also specified angular packages require npm to be no more than v7. These were reasons to use old node version instead of updating package.json.
-2. Store related entities for orders and patients defined in core directory.
+2. Store related entities for orders and patients are defined in core directory.
 This decision is based on the fact that settings related entities also defined in core, but the feature "settings" located in features directory.
 3. Hebrew language filled with English for good testing UI.

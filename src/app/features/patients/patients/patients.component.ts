@@ -8,11 +8,11 @@ import { BehaviorSubject, Subject, combineLatest } from "rxjs";
 import { filter, map, takeUntil, tap } from "rxjs/operators";
 
 enum PatientsColumnName {
-  firstName = 'first-name',
-  lastName = 'last-name',
-  birthDate = 'birth-date',
-  age = 'age',
-  favorite = 'favorite',
+  firstName = "first-name",
+  lastName = "last-name",
+  birthDate = "birth-date",
+  age = "age",
+  favorite = "favorite",
 }
 
 @Component({
@@ -84,7 +84,7 @@ export class PatientsComponent implements OnInit, OnDestroy {
 
   private calculateAge(formattedBirthDate: string): PatientAge {
     if (!formattedBirthDate) {
-      return 'N/A';
+      return "N/A";
     }
 
     const currentDate = new Date();

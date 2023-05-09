@@ -9,14 +9,15 @@ import { OrdersAppState } from "./orders.model";
 import { HttpService } from "app/core/http/http.service";
 import { GetOrdersResponse } from "app/shared/models/order.model";
 
-export const FAVORITE_ORDERS_STATE_PATH_KEY = "ORDERS.FAVORITE-ORDERS";
+const FAVORITE_ORDERS_STATE_PATH_KEY = "ORDERS.FAVORITE-ORDERS";
+const GET_ORDERS_API_URL = "https://api.mocki.io/v2/79fb05cb"
 
 @Injectable()
 export class OrdersEffects {
   fetchOrders = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchOrders),
-      exhaustMap(() => this.httpService.get<GetOrdersResponse>("https://api.mocki.io/v2/79fb05cb")
+      exhaustMap(() => this.httpService.get<GetOrdersResponse>(GET_ORDERS_API_URL)
         .pipe(
           map(response => {
             return ordersFetched({ orders: response.order });

@@ -23,7 +23,7 @@
           <td mat-cell *matCellDef="let favorite">{{ favorite.name }}</td>
         </ng-container>
         <ng-container [matColumnDef]="columnNames.remove">
-          <th mat-header-cell *matHeaderCellDef>{{ 'stms.favorites.table.columns.unfavor' | translate }}</th>
+          <th mat-header-cell *matHeaderCellDef rtl>{{ 'stms.favorites.table.columns.unfavor' | translate }}</th>
           <td mat-cell *matCellDef="let favorite">
             <st-big-input-action
               [label]="'stms.actions.remove' | translate"

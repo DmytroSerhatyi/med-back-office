@@ -66,7 +66,7 @@ export interface GetPatientsResponse {
   undisplayedMatches: boolean;
 }
 
-export type PatientAge = number | 'N/A';
+export type PatientAge = number | "N/A";
 
 export interface PatientView {
   id: string;
