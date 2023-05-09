@@ -58,3 +58,22 @@ export interface Patient {
   followUpPatient?: any;
   isHospitalized?: boolean;
 }
+
+export interface GetPatientsResponse {
+  count: number;
+  moreUncountedMatches: boolean;
+  patient: Patient[];
+  undisplayedMatches: boolean;
+}
+
+export type PatientAge = number | 'N/A';
+
+export interface PatientView {
+  id: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+  age: PatientAge;
+  isFavorite: boolean;
+}
+

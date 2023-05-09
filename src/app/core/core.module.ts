@@ -28,6 +28,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { FormsModule } from "@angular/forms";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { selectFavoriteOrders, selectOrders } from "app/core/orders/orders.selector";
+import { selectFavoritePatients, selectPatients } from "./patients/patients.selector";
 import { environment } from "../../environments/environment";
 
 import {
@@ -76,6 +77,7 @@ import {
   faYoutube
 } from "@fortawesome/free-brands-svg-icons";
 import { OrdersEffects } from "./orders/orders.effects";
+import { PatientsEffects } from "./patients/patients.effects";
 
 export {
   TitleService,
@@ -95,7 +97,9 @@ export {
   selectSettingsLanguage,
   selectSettingsStickyHeader,
   selectOrders,
-  selectFavoriteOrders
+  selectFavoriteOrders,
+  selectPatients,
+  selectFavoritePatients
 };
 
 export function httpLoaderFactory(http: HttpClient) {
@@ -127,7 +131,7 @@ export function httpLoaderFactory(http: HttpClient) {
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects, SettingsEffects, OrdersEffects]),
+    EffectsModule.forRoot([AuthEffects, SettingsEffects, PatientsEffects, OrdersEffects]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
