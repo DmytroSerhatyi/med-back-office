@@ -56,6 +56,7 @@
   "stms.favorites.table.columns.type-patient": "Patient",
   "stms.favorites.table.columns.type-order": "Order",
   "stms.favorites.table.columns.unfavor": "Remove from favorite",
+  "stms.favorites.filter.placeholder": "Look for favorites by name",
 
   "stms.actions.add": "Add",
   "stms.actions.remove": "Remove"

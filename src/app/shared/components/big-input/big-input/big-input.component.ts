@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "st-big-input",
@@ -15,5 +15,12 @@ export class BigInputComponent {
   @Input()
   disabled = false;
 
+  @Output()
+  changed: EventEmitter<string> = new EventEmitter<string>();
+
   hasFocus = false;
+
+  onChange(): void {
+    this.changed.emit(this.value);
+  }
 }
